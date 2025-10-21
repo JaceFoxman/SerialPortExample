@@ -7,11 +7,11 @@
 
     Sub Connect()
         SerialPort1.Close()
-        SerialPort1.BaudRate = 115200 'Q@ Board Default
+        SerialPort1.BaudRate = 9600 'Q@ Board Default
         SerialPort1.Parity = IO.Ports.Parity.None   'No Parity
         SerialPort1.StopBits = IO.Ports.StopBits.One    '1 Stop Bit
         SerialPort1.DataBits = 8    '8 Data Bits
-        SerialPort1.PortName = "COM3" 'Change to your COM Port
+        SerialPort1.PortName = "COM5" 'Change to your COM Port
 
         SerialPort1.Open()  'Open Serial Port
         If SerialPort1.IsOpen Then  'Check if Serial Port is open
@@ -27,14 +27,14 @@
 
     Sub ShiftLED()
         SerialPort1.Close()
-        SerialPort1.BaudRate = 115200 'Q@ Board Default
+        SerialPort1.BaudRate = 9600 'Q@ Board Default
         SerialPort1.Parity = IO.Ports.Parity.None   'No Parity
         SerialPort1.StopBits = IO.Ports.StopBits.One    '1 Stop Bit
         SerialPort1.DataBits = 8    '8 Data Bits
-        SerialPort1.PortName = "COM3" 'Change to your COM Port
+        SerialPort1.PortName = "COM5" 'Change to your COM Port
         SerialPort1.Open()  'Open Serial Port
         Dim data As Byte() = New Byte(1) {}
-        data(0) = &H20 'First byte (code to control digital output LED)
+        data(0) = &H2 'First byte (code to control digital output LED)
         Dim count = CountIncrease() 'Increase count for case statement
         Select Case count
             Case 1
